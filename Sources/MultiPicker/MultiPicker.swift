@@ -82,7 +82,12 @@ public struct MultiPicker<Label: View, SelectionValue: Hashable & CustomStringCo
         case .oneOrNone(let binding):
             return "\(binding.wrappedValue.map { "\($0)" } ?? "\(noneText)")"
         case .multiple(let binding):
-            return binding.wrappedValue.map(String.init(describing:)).formatted(.list(type: .and))
+//            return binding.wrappedValue.map(String.init(describing:)).formatted(.list(type: .and))
+
+            var text: String = .init(describing: binding.wrappedValue.first)
+            text = "\(text) and more"
+
+            return text
         }
     }
 
